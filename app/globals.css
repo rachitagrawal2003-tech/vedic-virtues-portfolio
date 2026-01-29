@@ -1,0 +1,39 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: var(--font-cormorant);
+  --font-sans: var(--font-montserrat);
+
+  --color-heritage-cream: #F9F7F2;
+  --color-heritage-charcoal: #1A1A1A;
+  --color-heritage-gold: #D4A373;
+}
+
+/* Base Styles */
+body {
+  background-color: var(--color-heritage-cream);
+  color: var(--color-heritage-charcoal);
+  font-family: var(--font-sans);
+  position: relative;
+  min-height: 100vh;
+}
+
+/* Texture Overlay */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: url('/Assets/Texture/Texture.png');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.4;
+  pointer-events: none;
+  z-index: -1;
+  mix-blend-mode: multiply; /* Optional: might look better on cream */
+}
+
+/* Typography Defaults */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+  font-weight: 500;
+}
