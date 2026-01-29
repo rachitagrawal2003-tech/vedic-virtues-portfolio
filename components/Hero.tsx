@@ -4,8 +4,51 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import MagneticButton from './ui/MagneticButton';
+import { useState, useRef, useEffect } from 'react';
 
 export default function Hero() {
+    const videoRef = useRef<HTMLVideoElement>(null);
+    const [isMobile, setIsMobile] = useState(false);
+    const [isPlaying, setIsPlaying] = useState(false);
+
+    useEffect(() => {
+        const checkMobile = () => setIsMobile(window.innerWidth < 768);
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
+
+    useEffect(() => {
+        if (!isMobile || !videoRef.current) return;
+
+        const video = videoRef.current;
+        let timeoutId: NodeJS.Timeout;
+
+        const onEnded = () => {
+            setIsPlaying(false);
+            timeoutId = setTimeout(() => {
+                setIsPlaying(true);
+                video.play().catch(() => { }); // Catch autoplay restrictions
+            }, 5000);
+        };
+
+        video.addEventListener('ended', onEnded);
+
+        // Initial start after a delay
+        timeoutId = setTimeout(() => {
+            setIsPlaying(true);
+            video.play().catch(() => { });
+        }, 3000);
+
+        return () => {
+            video.removeEventListener('ended', onEnded);
+            clearTimeout(timeoutId);
+            setIsPlaying(false);
+            video.pause();
+            video.currentTime = 0;
+        };
+    }, [isMobile]);
+
     return (
         <section className="relative w-full min-h-screen flex flex-col items-center justify-start overflow-hidden pt-16 md:pt-32">
 
@@ -20,21 +63,26 @@ export default function Hero() {
                         src="/Assets/Hero shot/Hero shot.png"
                         alt="Vedic Virtues Hero Bottle"
                         fill
-                        className="object-contain object-bottom pb-8 md:pb-0 transition-opacity duration-500 group-hover:opacity-0"
+                        className={`object-contain object-bottom pb-8 md:pb-0 transition-opacity duration-500 ${isPlaying ? 'opacity-0' : 'opacity-100 md:group-hover:opacity-0'}`}
                         priority
                     />
 
                     {/* Hover Animation Video */}
                     <video
+                        ref={videoRef}
                         src="/Assets/Animation/Main animation.mp4"
-                        className="absolute inset-0 w-full h-full object-contain object-bottom pb-8 md:pb-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                        loop
+                        className={`absolute inset-0 w-full h-full object-contain object-bottom pb-8 md:pb-0 transition-opacity duration-500 ${isPlaying ? 'opacity-100' : 'opacity-0 md:group-hover:opacity-100'}`}
+                        loop={!isMobile}
                         muted
                         playsInline
-                        onMouseEnter={(e) => e.currentTarget.play()}
+                        onMouseEnter={(e) => {
+                            if (!isMobile) e.currentTarget.play();
+                        }}
                         onMouseLeave={(e) => {
-                            e.currentTarget.pause();
-                            e.currentTarget.currentTime = 0;
+                            if (!isMobile) {
+                                e.currentTarget.pause();
+                                e.currentTarget.currentTime = 0;
+                            }
                         }}
                     />
                 </div>
