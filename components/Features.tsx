@@ -26,7 +26,7 @@ const features = [
 
 export default function Features() {
     return (
-        <section className="w-full py-24 px-8 bg-heritage-cream">
+        <section className="w-full py-10 md:py-24 px-8 bg-heritage-cream">
             <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
                 {features.map((feature, index) => (
                     <RevealOnScroll key={index} className="flex flex-col items-center text-center space-y-4 p-6 hover:bg-white/50 transition-colors duration-500 rounded-sm">

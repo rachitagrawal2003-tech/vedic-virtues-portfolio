@@ -10,7 +10,7 @@ export default function Home() {
     <main className="min-h-screen relative">
       <Header />
       <Hero />
-      <div className="flex flex-col gap-16 md:gap-24 pb-16 md:pb-24">
+      <div className="flex flex-col gap-10 md:gap-24 pb-10 md:pb-24">
         <ProductShowcase />
         <Features />
         <AboutUs />

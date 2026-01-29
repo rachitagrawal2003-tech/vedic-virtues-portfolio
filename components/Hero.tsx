@@ -7,7 +7,7 @@ import MagneticButton from './ui/MagneticButton';
 
 export default function Hero() {
     return (
-        <section className="relative w-full min-h-screen flex flex-col items-center justify-start overflow-hidden pt-24 md:pt-32">
+        <section className="relative w-full min-h-screen flex flex-col items-center justify-start overflow-hidden pt-16 md:pt-32">
 
             {/* Banner Image Area */}
             {/* Takes up significant height to be the 'big banner' */}
@@ -41,7 +41,7 @@ export default function Hero() {
             </div>
 
             {/* Text Area - Below the banner */}
-            <div className="relative z-10 w-full max-w-4xl mx-auto px-6 text-center pb-24 mt-8 md:mt-12 flex flex-col items-center">
+            <div className="relative z-10 w-full max-w-4xl mx-auto px-6 text-center pb-12 md:pb-24 mt-8 md:mt-12 flex flex-col items-center">
                 <motion.div
                     initial="hidden"
                     animate="visible"
