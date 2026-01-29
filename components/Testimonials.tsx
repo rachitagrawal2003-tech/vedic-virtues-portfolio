@@ -1,3 +1,5 @@
+import RevealOnScroll from './ui/RevealOnScroll';
+
 const testimonials = [
     {
         quote: "Since adding Sea Buckthorn to my daily routine, my skin feels more radiant and my energy levels have stabilized.",
@@ -26,7 +28,7 @@ export default function Testimonials() {
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                     {testimonials.map((t, i) => (
-                        <div key={i} className="p-10 bg-heritage-cream/30 text-center space-y-6 flex flex-col items-center justify-center">
+                        <RevealOnScroll key={i} className="p-10 bg-heritage-cream/30 text-center space-y-6 flex flex-col items-center justify-center">
                             <div className="text-4xl text-heritage-gold font-serif">"</div>
                             <p className="text-lg italic text-heritage-charcoal/80 leading-relaxed font-serif">
                                 {t.quote}
@@ -40,7 +42,7 @@ export default function Testimonials() {
                                     {t.role}
                                 </p>
                             </div>
-                        </div>
+                        </RevealOnScroll>
                     ))}
                 </div>
             </div>

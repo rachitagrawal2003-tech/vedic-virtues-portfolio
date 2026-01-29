@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import Link from 'next/link';
 import Header from "@/components/Header";
 import { useCart } from "@/context/CartContext";
 
@@ -34,7 +35,7 @@ export default function Shop() {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
                     {products.map((product) => (
-                        <div key={product.id} className="group bg-white p-8 rounded-sm shadow-sm hover:shadow-md transition-all duration-300">
+                        <Link href={`/shop/${product.id}`} key={product.id} className="group bg-white p-8 rounded-sm shadow-sm hover:shadow-md transition-all duration-300 block">
                             <div className="relative w-full aspect-[4/5] overflow-hidden mb-8 flex items-center justify-center border-b border-heritage-charcoal/5">
                                 <div className="relative w-full h-full transition-transform duration-700 group-hover:scale-105">
                                     <Image
@@ -56,7 +57,8 @@ export default function Shop() {
                                     {product.description}
                                 </p>
                                 <button
-                                    onClick={() => {
+                                    onClick={(e) => {
+                                        e.preventDefault(); // Prevent navigation when clicking 'Add to Cart'
                                         addToCart(product);
                                         alert(`Added ${product.name} to cart!`);
                                     }}
@@ -65,7 +67,7 @@ export default function Shop() {
                                     Add to Cart
                                 </button>
                             </div>
-                        </div>
+                        </Link>
                     ))}
                 </div>
             </div>

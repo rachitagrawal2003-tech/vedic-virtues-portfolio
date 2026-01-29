@@ -2,6 +2,8 @@
 
 import Image from 'next/image';
 import { motion } from 'framer-motion';
+import Link from 'next/link';
+import MagneticButton from './ui/MagneticButton';
 
 export default function Hero() {
     return (
@@ -39,27 +41,46 @@ export default function Hero() {
             </div>
 
             {/* Text Area - Below the banner */}
-            <div className="relative z-10 w-full max-w-4xl mx-auto px-6 text-center pb-24 mt-8 md:mt-12">
+            <div className="relative z-10 w-full max-w-4xl mx-auto px-6 text-center pb-24 mt-8 md:mt-12 flex flex-col items-center">
                 <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+                    initial="hidden"
+                    animate="visible"
+                    variants={{
+                        hidden: { opacity: 0 },
+                        visible: {
+                            opacity: 1,
+                            transition: {
+                                staggerChildren: 0.2,
+                                delayChildren: 0.3
+                            }
+                        }
+                    }}
                 >
-                    {/* Smaller heading size as requested to avoid overwhelming/overlapping */}
-                    <h1 className="text-3xl md:text-5xl lg:text-6xl leading-tight mb-6 text-heritage-charcoal font-serif">
+                    <motion.h1
+                        variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } } }}
+                        className="text-3xl md:text-5xl lg:text-6xl leading-tight mb-6 text-heritage-charcoal font-serif"
+                    >
                         Ancient Himalayan Wisdom. <br />
                         <span className="italic text-heritage-gold">Bottled for the Modern Soul.</span>
-                    </h1>
-                </motion.div>
+                    </motion.h1>
 
-                <motion.p
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, ease: "easeOut", delay: 0.4 }}
-                    className="text-sm md:text-base text-heritage-charcoal/80 max-w-lg mx-auto tracking-wide leading-relaxed font-sans"
-                >
-                    Small-batch concentrates crafted from hand-picked wild berries and roots.
-                </motion.p>
+                    <motion.p
+                        variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } } }}
+                        className="text-sm md:text-base text-heritage-charcoal/80 max-w-lg mx-auto tracking-wide leading-relaxed font-sans mb-10"
+                    >
+                        Small-batch concentrates crafted from hand-picked wild berries and roots.
+                    </motion.p>
+
+                    <motion.div
+                        variants={{ hidden: { opacity: 0, scale: 0.9 }, visible: { opacity: 1, scale: 1, transition: { duration: 0.6, ease: "easeOut" } } }}
+                    >
+                        <Link href="/shop">
+                            <MagneticButton className="px-10 py-4 bg-heritage-charcoal text-white text-xs uppercase tracking-[0.2em] hover:bg-heritage-gold transition-colors duration-500 rounded-full">
+                                Shop Collection
+                            </MagneticButton>
+                        </Link>
+                    </motion.div>
+                </motion.div>
             </div>
 
         </section>

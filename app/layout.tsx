@@ -3,6 +3,7 @@ import { Cormorant_Garamond, Montserrat } from "next/font/google";
 import "./globals.css";
 import { CartProvider } from "@/context/CartContext";
 import Footer from "@/components/Footer";
+import CustomCursor from "@/components/ui/CustomCursor";
 
 const cormorantGaramond = Cormorant_Garamond({
   variable: "--font-cormorant",
@@ -38,6 +39,7 @@ export default function RootLayout({
         <CartProvider>
           {children}
           <Footer />
+          <CustomCursor />
         </CartProvider>
       </body>
     </html>

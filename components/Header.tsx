@@ -4,14 +4,26 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { ShoppingCart, User, Search, X } from 'lucide-react';
 import { useCart } from "@/context/CartContext";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export default function Header() {
     const { cartCount } = useCart();
     const [isSearchOpen, setIsSearchOpen] = useState(false);
+    const [scrolled, setScrolled] = useState(false);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            setScrolled(window.scrollY > 50);
+        };
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
 
     return (
-        <header className="fixed top-0 left-0 w-full z-50 flex flex-col md:flex-row items-center justify-between px-8 py-4 bg-white shadow-sm transition-all duration-300">
+        <header
+            className={`fixed top-0 left-0 w-full z-50 flex flex-col md:flex-row items-center justify-between px-8 py-4 shadow-sm transition-all duration-500
+            ${scrolled ? 'bg-white/80 backdrop-blur-md' : 'bg-transparent'}`}
+        >
 
             {/* Top Row on Mobile: Logo and Icons */}
             <div className="w-full md:w-auto flex items-center justify-between md:contents order-1">

@@ -26,14 +26,30 @@ body::before {
   background-image: url('/Assets/Texture/Texture.png');
   background-size: cover;
   background-position: center;
-  opacity: 0.4;
+  opacity: 0.05;
   pointer-events: none;
   z-index: -1;
-  mix-blend-mode: multiply; /* Optional: might look better on cream */
+  mix-blend-mode: multiply;
+  /* Optional: might look better on cream */
 }
 
 /* Typography Defaults */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-serif);
   font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+p,
+span,
+li,
+a {
+  line-height: 1.8;
+  letter-spacing: 0.02em;
 }

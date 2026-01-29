@@ -1,4 +1,5 @@
 import { Leaf, Droplet, UserCheck, Heart } from 'lucide-react';
+import RevealOnScroll from './ui/RevealOnScroll';
 
 const features = [
     {
@@ -28,7 +29,7 @@ export default function Features() {
         <section className="w-full py-24 px-8 bg-heritage-cream">
             <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
                 {features.map((feature, index) => (
-                    <div key={index} className="flex flex-col items-center text-center space-y-4 p-6 hover:bg-white/50 transition-colors duration-500 rounded-sm">
+                    <RevealOnScroll key={index} className="flex flex-col items-center text-center space-y-4 p-6 hover:bg-white/50 transition-colors duration-500 rounded-sm">
                         <div className="text-heritage-gold mb-2">
                             {feature.icon}
                         </div>
@@ -38,7 +39,7 @@ export default function Features() {
                         <p className="text-sm leading-relaxed text-heritage-charcoal/80">
                             {feature.description}
                         </p>
-                    </div>
+                    </RevealOnScroll>
                 ))}
             </div>
         </section>

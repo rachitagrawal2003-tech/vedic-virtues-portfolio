@@ -10,10 +10,12 @@ export default function Home() {
     <main className="min-h-screen relative">
       <Header />
       <Hero />
-      <ProductShowcase />
-      <Features />
-      <AboutUs />
-      <Testimonials />
+      <div className="flex flex-col gap-16 md:gap-24 pb-16 md:pb-24">
+        <ProductShowcase />
+        <Features />
+        <AboutUs />
+        <Testimonials />
+      </div>
     </main>
   );
 }
