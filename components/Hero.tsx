@@ -54,7 +54,7 @@ export default function Hero() {
 
             {/* Banner Image Area */}
             {/* Takes up significant height to be the 'big banner' */}
-            <div className="relative w-full h-[65vh] md:h-[75vh] hidden md:flex items-center justify-center">
+            <div className="relative w-full h-[45vh] md:h-[75vh] flex items-center justify-center">
                 <div
                     className="relative w-full h-full group cursor-pointer"
                 >
