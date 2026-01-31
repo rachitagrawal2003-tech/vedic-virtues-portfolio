@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Cormorant_Garamond, Montserrat } from "next/font/google";
 import "./globals.css";
 import { CartProvider } from "@/context/CartContext";
+import { NotificationProvider } from "@/context/NotificationContext";
 import Footer from "@/components/Footer";
 import CustomCursor from "@/components/ui/CustomCursor";
 
@@ -36,11 +37,13 @@ export default function RootLayout({
       <body
         className={`${cormorantGaramond.variable} ${montserrat.variable} antialiased`}
       >
-        <CartProvider>
-          {children}
-          <Footer />
-          <CustomCursor />
-        </CartProvider>
+        <NotificationProvider>
+          <CartProvider>
+            {children}
+            <Footer />
+            <CustomCursor />
+          </CartProvider>
+        </NotificationProvider>
       </body>
     </html>
   );

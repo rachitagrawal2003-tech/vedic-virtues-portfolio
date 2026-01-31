@@ -14,10 +14,6 @@ export default function Cart() {
         <main className="min-h-screen bg-heritage-cream/20">
             <Header />
             <div className="pt-32 pb-24 px-8 max-w-5xl mx-auto">
-                <h1 className="text-4xl font-serif text-heritage-charcoal mb-12">
-                    Your Cart
-                </h1>
-
                 {cart.length === 0 ? (
                     <div className="text-center py-24 space-y-6">
                         <p className="text-xl text-heritage-charcoal/60">Your cart is empty.</p>
@@ -27,6 +23,9 @@ export default function Cart() {
                     </div>
                 ) : (
                     <div className="space-y-12">
+                        <h1 className="text-4xl font-serif text-heritage-charcoal mb-12 text-center">
+                            Your Cart
+                        </h1>
                         <div className="bg-white p-8 rounded-sm shadow-sm space-y-8">
                             {cart.map((item) => (
                                 <div key={item.id} className="flex items-center justify-between border-b border-heritage-charcoal/10 pb-8 last:border-0 last:pb-0">

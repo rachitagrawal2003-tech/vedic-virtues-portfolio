@@ -21,7 +21,7 @@ const products = [
 
 export default function ProductShowcase() {
     return (
-        <section className="w-full py-10 md:py-24 px-8">
+        <section id="collection" className="w-full py-10 md:py-24 px-8">
             <div className="max-w-6xl mx-auto">
                 <h2 className="text-4xl text-center font-serif text-heritage-charcoal mb-16">
                     Our Collection

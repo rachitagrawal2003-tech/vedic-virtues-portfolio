@@ -4,6 +4,7 @@ import { useParams } from 'next/navigation';
 import Image from 'next/image';
 import Header from "@/components/Header";
 import { useCart } from "@/context/CartContext";
+import { useNotification } from "@/context/NotificationContext";
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 
@@ -43,6 +44,7 @@ const productData = {
 export default function ProductPage() {
     const params = useParams();
     const { addToCart } = useCart();
+    const { showNotification } = useNotification();
     const [product, setProduct] = useState<any>(null);
 
     useEffect(() => {
@@ -129,7 +131,7 @@ export default function ProductPage() {
                             <button
                                 onClick={() => {
                                     addToCart(product);
-                                    alert(`Added ${product.name} to cart!`);
+                                    showNotification(`Added ${product.name} to your cart.`);
                                 }}
                                 className="w-full md:w-auto px-12 py-4 bg-heritage-charcoal text-white text-sm uppercase tracking-[0.2em] hover:bg-heritage-gold transition-all duration-500"
                             >

@@ -122,7 +122,7 @@ export default function Hero() {
                     <motion.div
                         variants={{ hidden: { opacity: 0, scale: 0.9 }, visible: { opacity: 1, scale: 1, transition: { duration: 0.6, ease: "easeOut" } } }}
                     >
-                        <Link href="/shop">
+                        <Link href="/#collection" scroll={true}>
                             <MagneticButton className="px-10 py-4 bg-heritage-charcoal text-white text-xs uppercase tracking-[0.2em] hover:bg-heritage-gold transition-colors duration-500 rounded-full">
                                 Shop Collection
                             </MagneticButton>
